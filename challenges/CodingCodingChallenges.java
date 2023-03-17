@@ -1,4 +1,4 @@
-package otinanai;
+package challenges;
 
 import java.util.*;
 
@@ -43,6 +43,9 @@ public class CodingCodingChallenges {
         }
     }
 
+    /**
+     * Write a program that returns if a word is palindrome or not.
+     */
     static boolean checkPalindrome(String input){
         char [] array2 = new char[input.length()];
 
@@ -52,6 +55,11 @@ public class CodingCodingChallenges {
         return input.equals(String.valueOf(array2));
     }
 
+    /**
+     * Write a program that receives an argument which includes of
+     * an array of numbers and returns two numbers such that their
+     * distance is the smallest among the other numbers.
+     */
     static String findSmallestDifference(String input){
         String [] parts = input.split(" ");
         int [] numbers = new int[parts.length];
@@ -104,6 +112,11 @@ public class CodingCodingChallenges {
         return returnedValue.toString();
     }
 
+    /**
+     * Write a programm that receives a string of numbers
+     * as arguments separated by white space, and calculates the
+     * longest increasing subsequence
+     */
     static String longestIncreasingSubsequence(String input){
         String [] parts = input.split(" ");
         int [] numbers = new int[parts.length];
@@ -121,6 +134,10 @@ public class CodingCodingChallenges {
         return set.toString();
     }
 
+    /**
+     * Write a program that takes a sentence as argument, and returns the smallest
+     * word in that sentence.
+     */
     static String returnShortestWord(String input){
         String [] parts = input.split(" ");
 
