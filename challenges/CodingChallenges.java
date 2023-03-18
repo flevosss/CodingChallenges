@@ -2,7 +2,7 @@ package challenges;
 
 import java.util.*;
 
-public class CodingCodingChallenges {
+public class CodingChallenges {
 
     private static Scanner scanner;
 
@@ -31,6 +31,7 @@ public class CodingCodingChallenges {
             case "COUNTCHARACTERS":
                 System.out.println("Give me a word to count the characters");
                 System.out.println(eachCharacterAppearance(scanner.nextLine()));
+                break;
             case "LONGESTSEQUENCE":
                 System.out.println("Give me numbers separated by space");
                 System.out.println(longestIncreasingSubsequence(scanner.nextLine()));
@@ -38,8 +39,28 @@ public class CodingCodingChallenges {
             case "SHORTESTWORD":
                 System.out.println("Give me a sentence to determine the smallest word in it.");
                 System.out.println(returnShortestWord(scanner.nextLine()));
+                break;
+            case "NPRIME":
+                System.out.println("Give me a number");
+                System.out.println(returnPrimeNumber(scanner.nextInt()));
+                break;
+            case "VOWELS":
+                System.out.println("Give me a word");
+                System.out.println("Number of vowels: " + numberOfVowels(scanner.nextLine()));
+                break;
+            case "HIGHESTPRODUCT":
+                System.out.println("Give me numbers");
+                String [] parts = scanner.nextLine().split(" ");
+                int [] numbers  = new int[parts.length];
+
+                for (int i = 0; i < parts.length; i++) {
+                    numbers[i] = Integer.parseInt(parts[i]);
+                }
+                System.out.println(highestProduct(numbers));
+                break;
             default:
                 System.out.println("Wrong command. Use menu to display valid commands:");
+                break;
         }
     }
 
@@ -113,7 +134,7 @@ public class CodingCodingChallenges {
     }
 
     /**
-     * Write a programm that receives a string of numbers
+     * Write a program that receives a string of numbers
      * as arguments separated by white space, and calculates the
      * longest increasing subsequence
      */
@@ -146,7 +167,7 @@ public class CodingCodingChallenges {
 
         for (String word: parts){
             int counter = 0;
-            for (char character : word.toCharArray()){
+            for (char ignored : word.toCharArray()){
                 counter++;
             }
             if (counter < smallestCounter){
@@ -155,5 +176,59 @@ public class CodingCodingChallenges {
             }
         }
         return smallestWord;
+    }
+
+    /**
+     * Write a program that prompts the user to enter a string
+     * and then prints out the number of vowels (a, e, i, o, u) in the string.
+     */
+    static int numberOfVowels(String input){
+        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+        int counter = 0;
+        for (char character: input.toCharArray()){
+            if (vowels.contains(character)) counter++;
+        }
+        return counter;
+    }
+
+    /**
+     * Write a program that takes in an array of integers and returns
+     * the highest product that can be obtained by multiplying any
+     * three integers in the array. The input array will contain
+     * at least three integers.
+     */
+    static int highestProduct(int [] numbers){
+        //Arrays.sort(numbers);
+        int highest = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i+1; j < numbers.length; j++) {
+                //avoiding same element.
+                for (int k = j+1; k < numbers.length; k++) {
+                    int number = numbers[i] * numbers[j] * numbers[k];
+                    if (number >= highest){
+                        highest = number;
+                    }
+                }
+            }
+        }
+        return highest;
+    }
+
+    /**
+     * Write a program that takes in an integer N and returns the Nth prime number.
+     * The first prime number is 2, and the second prime number is 3.
+     * For example, if the input is 5, the output should be 11, because 11 is the 5th prime number.
+     */
+    //FIXME: currently working on this
+    static int returnPrimeNumber(int N) {
+        int [] numbers = new int[N+1];
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 2; j < 500; j++) {
+
+            }
+        }
+
+        return numbers[N-1];
     }
 }
