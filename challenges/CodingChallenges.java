@@ -10,58 +10,67 @@ public class CodingChallenges {
         System.out.println("Welcome to my coding challenges! Type menu to display the list of available tests" +
                 " for my challenges");
         scanner = new Scanner(System.in);
-
         while (scanner.hasNext()){
-            String input = scanner.nextLine();
-            handleInput(input.toUpperCase());
+            handleInput(scanner.nextLine().toUpperCase());
         }
         scanner.close();
     }
 
     static void handleInput(String input){
-        switch (input){
-            case "PALINDROME":
-                System.out.println("Give me a word:");
-                System.out.println(checkPalindrome(scanner.nextLine()));
-                break;
-            case "ABSOLUTEDIFFERENCE":
-                System.out.println("Give me numbers separated by space:");
-                System.out.println(findSmallestDifference(scanner.nextLine()));
-                break;
-            case "COUNTCHARACTERS":
-                System.out.println("Give me a word to count the characters");
-                System.out.println(eachCharacterAppearance(scanner.nextLine()));
-                break;
-            case "LONGESTSEQUENCE":
-                System.out.println("Give me numbers separated by space");
-                System.out.println(longestIncreasingSubsequence(scanner.nextLine()));
-                break;
-            case "SHORTESTWORD":
-                System.out.println("Give me a sentence to determine the smallest word in it.");
-                System.out.println(returnShortestWord(scanner.nextLine()));
-                break;
-            case "NPRIME":
-                System.out.println("Give me a number");
-                System.out.println(returnPrimeNumber(scanner.nextInt()));
-                break;
-            case "VOWELS":
-                System.out.println("Give me a word");
-                System.out.println("Number of vowels: " + numberOfVowels(scanner.nextLine()));
-                break;
-            case "HIGHESTPRODUCT":
-                System.out.println("Give me numbers");
-                String [] parts = scanner.nextLine().split(" ");
-                int [] numbers  = new int[parts.length];
+        try {
+            switch (input) {
+                case "PALINDROME":
+                    System.out.println("Give me a word:");
+                    System.out.println(checkPalindrome(scanner.nextLine()));
+                    break;
+                case "ABSOLUTEDIFFERENCE":
+                    System.out.println("Give me numbers separated by space:");
+                    System.out.println(findSmallestDifference(scanner.nextLine()));
+                    break;
+                case "COUNTCHARACTERS":
+                    System.out.println("Give me a word to count the characters");
+                    System.out.println(eachCharacterAppearance(scanner.nextLine()));
+                    break;
+                case "LONGESTSEQUENCE":
+                    System.out.println("Give me numbers separated by space");
+                    System.out.println(longestIncreasingSubsequence(scanner.nextLine()));
+                    break;
+                case "SHORTESTWORD":
+                    System.out.println("Give me a sentence to determine the smallest word in it.");
+                    System.out.println(returnShortestWord(scanner.nextLine()));
+                    break;
+                case "NPRIME":
+                    System.out.println("Give me a number");
+                    System.out.println(returnPrimeNumber(scanner.nextInt()));
+                    break;
+                case "VOWELS":
+                    System.out.println("Give me a word");
+                    System.out.println("Number of vowels: " + numberOfVowels(scanner.nextLine()));
+                    break;
+                case "HIGHESTPRODUCT":
+                    System.out.println("Give me numbers");
+                    String[] parts = scanner.nextLine().split(" ");
+                    int[] numbers = new int[parts.length];
 
-                for (int i = 0; i < parts.length; i++) {
-                    numbers[i] = Integer.parseInt(parts[i]);
-                }
-                System.out.println(highestProduct(numbers));
-                break;
-            default:
-                System.out.println("Wrong command. Use menu to display valid commands:");
-                break;
+                    for (int i = 0; i < parts.length; i++) {
+                        numbers[i] = Integer.parseInt(parts[i]);
+                    }
+                    System.out.println(highestProduct(numbers));
+                    break;
+                case "MENU":
+                    System.out.println(displayMenu());
+                    break;
+                default:
+                    System.out.println("Wrong command. Use menu to display valid commands:");
+                    break;
+            }
+        } catch (Exception ignored) {
+            System.out.println("Please enter valid inputs!");
         }
+    }
+
+    static String displayMenu() {
+        return "im lazy to write this";
     }
 
     /**
