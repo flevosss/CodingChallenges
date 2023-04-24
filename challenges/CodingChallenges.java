@@ -16,6 +16,10 @@ public class CodingChallenges {
         scanner.close();
     }
 
+    /**
+     * Calls the functions of the class according to the input of the user.
+     * @param input the challenge tested.
+     */
     static void handleInput(String input){
         try {
             switch (input) {
@@ -57,20 +61,13 @@ public class CodingChallenges {
                     }
                     System.out.println(highestProduct(numbers));
                     break;
-                case "MENU":
-                    System.out.println(displayMenu());
-                    break;
                 default:
-                    System.out.println("Wrong command. Use menu to display valid commands:");
+                    System.out.println("Wrong command");
                     break;
             }
         } catch (Exception ignored) {
             System.out.println("Please enter valid inputs!");
         }
-    }
-
-    static String displayMenu() {
-        return "test";
     }
 
     /**
@@ -228,16 +225,35 @@ public class CodingChallenges {
      * The first prime number is 2, and the second prime number is 3.
      * For example, if the input is 5, the output should be 11, because 11 is the 5th prime number.
      */
-    //FIXME: currently working on this
     static int returnPrimeNumber(int N) {
-        int [] numbers = new int[N+1];
+        List<Integer> primeNumbers = new ArrayList<>();
+        int count = 0;
 
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = 2; j < 500; j++) {
-
+        while(count < N) {
+            for (int i = 2; true; i++) {
+                if (isPrime(i)) {
+                    primeNumbers.add(i);
+                    count++;
+                }
+                if (count >= N) {
+                    break;
+                }
             }
         }
+        return primeNumbers.get(N-1);
+    }
 
-        return numbers[N-1];
+    /**
+     * Method to be used to determine if a number is prime or not.
+     * @param number the number to be checked.
+     * @return true is the number is prime, false otherwise.
+     */
+    static boolean isPrime(int number){
+        for (int i = 2; i <= number/2; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
