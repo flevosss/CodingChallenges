@@ -70,7 +70,7 @@ public class CodingChallenges {
     }
 
     static String displayMenu() {
-        return "im lazy to write this";
+        return "test";
     }
 
     /**
